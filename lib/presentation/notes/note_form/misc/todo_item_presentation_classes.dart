@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:notes_app/domain/core/value_objects.dart';
 import 'package:notes_app/domain/notes/todo_item.dart';
+import 'package:notes_app/domain/notes/value_objects.dart';
 
 part 'todo_item_presentation_classes.freezed.dart';
 
