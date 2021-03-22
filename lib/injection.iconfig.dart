@@ -12,6 +12,7 @@ import 'package:notes_app/domain/auth/i_auth_facade.dart';
 import 'package:notes_app/infrastructure/notes/note_repository.dart';
 import 'package:notes_app/domain/notes/i_note_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:notes_app/application/notes/note_form/note_form_bloc.dart';
 import 'package:notes_app/application/notes/note_watcher/note_watcher_bloc.dart';
 import 'package:notes_app/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:notes_app/application/auth/auth_bloc.dart';
@@ -27,6 +28,7 @@ void $initGetIt(GetIt g, {String environment}) {
       () => FirebaseAuthFacade(g<FirebaseAuth>(), g<GoogleSignIn>()));
   g.registerLazySingleton<INoteRepository>(
       () => NoteRepository(g<Firestore>()));
+  g.registerFactory<NoteFormBloc>(() => NoteFormBloc(g<INoteRepository>()));
   g.registerFactory<NoteWatcherBloc>(
       () => NoteWatcherBloc(g<INoteRepository>()));
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
